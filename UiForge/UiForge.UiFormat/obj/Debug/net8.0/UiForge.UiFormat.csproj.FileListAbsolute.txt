@@ -10,3 +10,16 @@ C:\Users\Admin\Desktop\програмирование с++\UiForge\UiForge.UiFor
 C:\Users\Admin\Desktop\програмирование с++\UiForge\UiForge.UiFormat\obj\Debug\net8.0\UiForge.UiFormat.pdb
 C:\Users\Admin\Desktop\програмирование с++\UiForge\UiForge.UiFormat\obj\Debug\net8.0\ref\UiForge.UiFormat.dll
 C:\Users\Admin\Desktop\програмирование с++\UiForge\UiForge.UiFormat\obj\Debug\net8.0\UiForge..C798DDA3.Up2Date
+C:\Users\Admin\Documents\GitHub\UI_Forge\UiForge\UiForge.UiFormat\bin\Debug\net8.0\UiForge.UiFormat.deps.json
+C:\Users\Admin\Documents\GitHub\UI_Forge\UiForge\UiForge.UiFormat\bin\Debug\net8.0\UiForge.UiFormat.dll
+C:\Users\Admin\Documents\GitHub\UI_Forge\UiForge\UiForge.UiFormat\bin\Debug\net8.0\UiForge.UiFormat.pdb
+C:\Users\Admin\Documents\GitHub\UI_Forge\UiForge\UiForge.UiFormat\obj\Debug\net8.0\UiForge.UiFormat.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Documents\GitHub\UI_Forge\UiForge\UiForge.UiFormat\obj\Debug\net8.0\UiForge.UiFormat.AssemblyInfoInputs.cache
+C:\Users\Admin\Documents\GitHub\UI_Forge\UiForge\UiForge.UiFormat\obj\Debug\net8.0\UiForge.UiFormat.AssemblyInfo.cs
+C:\Users\Admin\Documents\GitHub\UI_Forge\UiForge\UiForge.UiFormat\obj\Debug\net8.0\UiForge.UiFormat.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Documents\GitHub\UI_Forge\UiForge\UiForge.UiFormat\obj\Debug\net8.0\UiForge.UiFormat.sourcelink.json
+C:\Users\Admin\Documents\GitHub\UI_Forge\UiForge\UiForge.UiFormat\obj\Debug\net8.0\UiForge.UiFormat.dll
+C:\Users\Admin\Documents\GitHub\UI_Forge\UiForge\UiForge.UiFormat\obj\Debug\net8.0\refint\UiForge.UiFormat.dll
+C:\Users\Admin\Documents\GitHub\UI_Forge\UiForge\UiForge.UiFormat\obj\Debug\net8.0\UiForge.UiFormat.pdb
+C:\Users\Admin\Documents\GitHub\UI_Forge\UiForge\UiForge.UiFormat\obj\Debug\net8.0\ref\UiForge.UiFormat.dll
+C:\Users\Admin\Documents\GitHub\UI_Forge\UiForge\UiForge.UiFormat\obj\Debug\net8.0\UiForge..C798DDA3.Up2Date

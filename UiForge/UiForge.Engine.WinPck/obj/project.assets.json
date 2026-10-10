@@ -32,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin\\Desktop\\програмирование с++\\UiForge\\UiForge.Engine.WinPck\\UiForge.Engine.WinPck.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\Documents\\GitHub\\UI_Forge\\UiForge\\UiForge.Engine.WinPck\\UiForge.Engine.WinPck.csproj",
       "projectName": "UiForge.Engine.WinPck",
-      "projectPath": "C:\\Users\\Admin\\Desktop\\програмирование с++\\UiForge\\UiForge.Engine.WinPck\\UiForge.Engine.WinPck.csproj",
+      "projectPath": "C:\\Users\\Admin\\Documents\\GitHub\\UI_Forge\\UiForge\\UiForge.Engine.WinPck\\UiForge.Engine.WinPck.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Admin\\Desktop\\програмирование с++\\UiForge\\UiForge.Engine.WinPck\\obj\\",
+      "outputPath": "C:\\Users\\Admin\\Documents\\GitHub\\UI_Forge\\UiForge\\UiForge.Engine.WinPck\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -54,8 +54,8 @@
           "framework": "net8.0",
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Admin\\Desktop\\програмирование с++\\UiForge\\UiForge.Core\\UiForge.Core.csproj": {
-              "projectPath": "C:\\Users\\Admin\\Desktop\\програмирование с++\\UiForge\\UiForge.Core\\UiForge.Core.csproj"
+            "C:\\Users\\Admin\\Documents\\GitHub\\UI_Forge\\UiForge\\UiForge.Core\\UiForge.Core.csproj": {
+              "projectPath": "C:\\Users\\Admin\\Documents\\GitHub\\UI_Forge\\UiForge\\UiForge.Core\\UiForge.Core.csproj"
             }
           }
         }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\Desktop\\програмирование с++\\UiForge\\UiForge.UiFormat\\UiForge.UiFormat.csproj": {}
+    "C:\\Users\\Admin\\Documents\\GitHub\\UI_Forge\\UiForge\\UiForge.UiFormat\\UiForge.UiFormat.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\Desktop\\програмирование с++\\UiForge\\UiForge.UiFormat\\UiForge.UiFormat.csproj": {
+    "C:\\Users\\Admin\\Documents\\GitHub\\UI_Forge\\UiForge\\UiForge.UiFormat\\UiForge.UiFormat.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\програмирование с++\\UiForge\\UiForge.UiFormat\\UiForge.UiFormat.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\Documents\\GitHub\\UI_Forge\\UiForge\\UiForge.UiFormat\\UiForge.UiFormat.csproj",
         "projectName": "UiForge.UiFormat",
-        "projectPath": "C:\\Users\\Admin\\Desktop\\програмирование с++\\UiForge\\UiForge.UiFormat\\UiForge.UiFormat.csproj",
+        "projectPath": "C:\\Users\\Admin\\Documents\\GitHub\\UI_Forge\\UiForge\\UiForge.UiFormat\\UiForge.UiFormat.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\Desktop\\програмирование с++\\UiForge\\UiForge.UiFormat\\obj\\",
+        "outputPath": "C:\\Users\\Admin\\Documents\\GitHub\\UI_Forge\\UiForge\\UiForge.UiFormat\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",

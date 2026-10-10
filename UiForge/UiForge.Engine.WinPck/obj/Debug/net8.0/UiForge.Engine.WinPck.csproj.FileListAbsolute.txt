@@ -13,3 +13,19 @@ C:\Users\Admin\Desktop\програмирование с++\UiForge\UiForge.Engin
 C:\Users\Admin\Desktop\програмирование с++\UiForge\UiForge.Engine.WinPck\obj\Debug\net8.0\refint\UiForge.Engine.WinPck.dll
 C:\Users\Admin\Desktop\програмирование с++\UiForge\UiForge.Engine.WinPck\obj\Debug\net8.0\UiForge.Engine.WinPck.pdb
 C:\Users\Admin\Desktop\програмирование с++\UiForge\UiForge.Engine.WinPck\obj\Debug\net8.0\ref\UiForge.Engine.WinPck.dll
+C:\Users\Admin\Documents\GitHub\UI_Forge\UiForge\UiForge.Engine.WinPck\bin\Debug\net8.0\UiForge.Engine.WinPck.deps.json
+C:\Users\Admin\Documents\GitHub\UI_Forge\UiForge\UiForge.Engine.WinPck\bin\Debug\net8.0\UiForge.Engine.WinPck.dll
+C:\Users\Admin\Documents\GitHub\UI_Forge\UiForge\UiForge.Engine.WinPck\bin\Debug\net8.0\UiForge.Engine.WinPck.pdb
+C:\Users\Admin\Documents\GitHub\UI_Forge\UiForge\UiForge.Engine.WinPck\bin\Debug\net8.0\UiForge.Core.dll
+C:\Users\Admin\Documents\GitHub\UI_Forge\UiForge\UiForge.Engine.WinPck\bin\Debug\net8.0\UiForge.Core.pdb
+C:\Users\Admin\Documents\GitHub\UI_Forge\UiForge\UiForge.Engine.WinPck\obj\Debug\net8.0\UiForge.Engine.WinPck.csproj.AssemblyReference.cache
+C:\Users\Admin\Documents\GitHub\UI_Forge\UiForge\UiForge.Engine.WinPck\obj\Debug\net8.0\UiForge.Engine.WinPck.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Documents\GitHub\UI_Forge\UiForge\UiForge.Engine.WinPck\obj\Debug\net8.0\UiForge.Engine.WinPck.AssemblyInfoInputs.cache
+C:\Users\Admin\Documents\GitHub\UI_Forge\UiForge\UiForge.Engine.WinPck\obj\Debug\net8.0\UiForge.Engine.WinPck.AssemblyInfo.cs
+C:\Users\Admin\Documents\GitHub\UI_Forge\UiForge\UiForge.Engine.WinPck\obj\Debug\net8.0\UiForge.Engine.WinPck.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Documents\GitHub\UI_Forge\UiForge\UiForge.Engine.WinPck\obj\Debug\net8.0\UiForge.Engine.WinPck.sourcelink.json
+C:\Users\Admin\Documents\GitHub\UI_Forge\UiForge\UiForge.Engine.WinPck\obj\Debug\net8.0\UiForge..975FF91C.Up2Date
+C:\Users\Admin\Documents\GitHub\UI_Forge\UiForge\UiForge.Engine.WinPck\obj\Debug\net8.0\UiForge.Engine.WinPck.dll
+C:\Users\Admin\Documents\GitHub\UI_Forge\UiForge\UiForge.Engine.WinPck\obj\Debug\net8.0\refint\UiForge.Engine.WinPck.dll
+C:\Users\Admin\Documents\GitHub\UI_Forge\UiForge\UiForge.Engine.WinPck\obj\Debug\net8.0\UiForge.Engine.WinPck.pdb
+C:\Users\Admin\Documents\GitHub\UI_Forge\UiForge\UiForge.Engine.WinPck\obj\Debug\net8.0\ref\UiForge.Engine.WinPck.dll
