@@ -28,6 +28,12 @@ namespace UiForge.Engine.WinPck
             };
             if (file is null) return IntPtr.Zero;
 
+            // Сначала — явный путь рядом с программой. В «одиночном exe» (publish single-file) у сборки нет
+            // собственной папки, и поиск по одному имени файла может не сработать.
+            string full = System.IO.Path.Combine(AppContext.BaseDirectory, file);
+            if (System.IO.File.Exists(full) && NativeLibrary.TryLoad(full, out IntPtr direct))
+                return direct;
+
             if (NativeLibrary.TryLoad(file, assembly, searchPath, out IntPtr handle))
                 return handle;
 

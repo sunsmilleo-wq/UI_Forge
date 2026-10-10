@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin\\Documents\\GitHub\\UI_Forge\\UiForge\\UiForge.Core\\UiForge.Core.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\Desktop\\програмирование с++\\UiForge\\UiForge.Core\\UiForge.Core.csproj",
       "projectName": "UiForge.Core",
-      "projectPath": "C:\\Users\\Admin\\Documents\\GitHub\\UI_Forge\\UiForge\\UiForge.Core\\UiForge.Core.csproj",
+      "projectPath": "C:\\Users\\Admin\\Desktop\\програмирование с++\\UiForge\\UiForge.Core\\UiForge.Core.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Admin\\Documents\\GitHub\\UI_Forge\\UiForge\\UiForge.Core\\obj\\",
+      "outputPath": "C:\\Users\\Admin\\Desktop\\програмирование с++\\UiForge\\UiForge.Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",

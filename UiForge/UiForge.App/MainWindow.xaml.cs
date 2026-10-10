@@ -44,9 +44,8 @@ namespace UiForge.App
         {
             InitializeComponent();
 
-            AddTypeCombo.ItemsSource = UiControlSchema.ByTag.Values
+            AddTypeList.ItemsSource = UiControlSchema.ByTag.Values
                 .Where(s => s.HasPosition).OrderBy(s => s.DisplayName).ToList();
-            AddTypeCombo.SelectedIndex = 0;
 
             InitCodeEditor();
             BuildPropertiesPanel();
@@ -109,7 +108,7 @@ namespace UiForge.App
                 "Несохранённые изменения", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes;
         }
 
-        private const string AppVersion = "v1.0";
+        private const string AppVersion = "v1.2";
 
         private void UpdateTitle() =>
             Title = _currentFile is null ? $"UiForge {AppVersion} — редактор интерфейсов Perfect World"
@@ -164,11 +163,13 @@ namespace UiForge.App
                 _ifaceSource?.Dispose();
                 _ifaceSource = newSource;
 
+                InvalidateSearchIndex();
                 _allXml.Clear();
                 _allXml.AddRange(_ifaceSource.Files.Where(f => f.EndsWith(".xml", StringComparison.OrdinalIgnoreCase)));
                 FileFilterBox.Text = "";
                 ApplyFileFilter();
 
+                UpdateButtons();
                 InterfaceLabel.Text = $"{(kind == "dir" ? "папка" : "архив")} {_ifaceSource.DisplayName} · {_allXml.Count} xml";
                 StatusText.Text = _allXml.Count > 0 ? "Выберите файл интерфейса слева." : "В источнике нет .xml файлов.";
                 SaveSettings();
@@ -290,6 +291,8 @@ namespace UiForge.App
             }
             else
             {
+                CodeStatus.Text = "✔ XML корректен";
+                CodeStatus.Foreground = (Brush)FindResource("Good");
                 StatusText.Text = $"Открыт: {path}" +
                                   (_lengthPrefix > 0 ? $"  (с заголовком длины {_lengthPrefix} байта — пересчитывается при сохранении)" : "");
             }
@@ -334,8 +337,8 @@ namespace UiForge.App
             bool has = _document != null;            // а вот добавлять/дублировать/удалять — только когда есть разобранная модель
             SaveButton.IsEnabled = fileOpen;
             ExportButton.IsEnabled = fileOpen;
-            AddTypeCombo.IsEnabled = has;
             AddButton.IsEnabled = has;
+            SearchButton.IsEnabled = _ifaceSource != null;
             DeleteButton.IsEnabled = has && _selection.Count > 0;
             DuplicateButton.IsEnabled = has && _selection.Count > 0;
         }
@@ -439,6 +442,7 @@ namespace UiForge.App
             bool typing = e.OriginalSource is TextBox || XmlEditor.TextArea.IsKeyboardFocusWithin;
 
             if (ctrl && e.Key == Key.S) { SaveCurrent(); e.Handled = true; return; }
+            if (ctrl && e.Key == Key.F && _ifaceSource != null) { OpenSearch(); e.Handled = true; return; }
             if (typing) return; // в полях ввода и в коде — обычное поведение клавиш (Ctrl+Z там свой)
 
             if (ctrl && e.Key == Key.Z) { Undo(); e.Handled = true; }
@@ -475,6 +479,7 @@ namespace UiForge.App
                 string text = _document?.ToXmlString() ?? XmlEditor.Text; // raw-режим сохраняет как есть
                 byte[] bytes = TextCodec.Encode(text, _enc, _hasBom, _lengthPrefix, _extraBoms);
                 _ifaceSource.Write(_currentFile, bytes);
+                if (_searchIndex != null) _searchIndex[_currentFile] = text;
                 _dirty = false;
                 UpdateTitle();
                 StatusText.Text = $"Сохранено: {_currentFile}";
@@ -514,13 +519,71 @@ namespace UiForge.App
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            if (_document is null || AddTypeCombo.SelectedItem is not UiControlSchema schema) return;
-            double w = Math.Min(120, Math.Max(40, _document.Root.Width - 40));
-            double h = Math.Min(30, Math.Max(20, _document.Root.Height - 40));
+            if (_document is null) return;
+            AddPopup.IsOpen = true;
+        }
+
+        private void AddTypeList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (AddTypeList.SelectedItem is not UiControlSchema schema) return;
+            AddPopup.IsOpen = false;
+            AddTypeList.SelectedItem = null;
+            AddElement(schema);
+        }
+
+        /// <summary>Типичные размеры/подписи новых элементов, чтобы новый элемент сразу был виден и пригоден.</summary>
+        private static readonly Dictionary<string, (string Prefix, double W, double H, string? Text)> NewElementDefaults = new()
+        {
+            ["LABEL"] = ("Lbl_", 120, 16, "Надпись"),
+            ["EDIT"] = ("Edit_", 150, 22, null),
+            ["IMAGEPICTURE"] = ("Img_", 64, 64, null),
+            ["STILLIMAGEBUTTON"] = ("Btn_", 100, 24, "Кнопка"),
+            ["RADIO"] = ("Radio_", 20, 20, null),
+            ["CHECK"] = ("Chk_", 20, 20, null),
+            ["TEXT"] = ("Txt_", 200, 80, "Текст"),
+            ["LIST"] = ("List_", 200, 100, null),
+            ["PROGRESS"] = ("Prog_", 150, 14, null),
+            ["COMBO"] = ("Combo_", 150, 22, null),
+            ["SLIDER"] = ("Slider_", 150, 16, null),
+            ["SCROLL"] = ("Scroll_", 16, 100, null),
+            ["TREE"] = ("Tree_", 200, 150, null),
+            ["SUBDIALOG"] = ("Sub_", 200, 150, null),
+            ["WINDOWPICTURE"] = ("Frame_", 100, 100, null),
+            ["VERTICALTEXT"] = ("VText_", 20, 100, "Текст"),
+        };
+
+        private void AddElement(UiControlSchema schema)
+        {
+            if (_document is null) return;
+
+            var d = NewElementDefaults.TryGetValue(schema.Tag, out var found) ? found : (schema.Tag + "_", 100d, 30d, (string?)null);
+            double dw = _document.Root.Width > 0 ? _document.Root.Width : 400;
+            double dh = _document.Root.Height > 0 ? _document.Root.Height : 300;
+            int step = _document.Children.Count % 8;   // чтобы подряд добавленные элементы не слипались
+            double x = Math.Max(0, Math.Round((dw - d.Item2) / 2 / 5) * 5 + step * 10);
+            double y = Math.Max(0, Math.Round((dh - d.Item3) / 2 / 5) * 5 + step * 10);
 
             Mutate(() =>
             {
-                var node = _document.AddChild(schema.Tag, 20, 20, w, h);
+                var node = _document.AddChild(schema.Tag, x, y, d.Item2, d.Item3);
+
+                // уникальное имя: Btn_1, Btn_2 ...
+                var used = new HashSet<string>(_document.Children.Select(c => c.Name), StringComparer.OrdinalIgnoreCase);
+                int n = 1;
+                while (used.Contains($"{d.Item1}{n}")) n++;
+                node.Element.SetAttributeValue("Name", $"{d.Item1}{n}");
+
+                // подпись + шрифт: берём у уже существующего текстового элемента, чтобы выглядело как остальное окно
+                if (schema.TextValuePath != null && schema.TextValuePath.StartsWith("Text/"))
+                {
+                    var donor = _document.Children.FirstOrDefault(c =>
+                        UiPathAccessor.Get(c.Element, "Text/@FontName") != null && !ReferenceEquals(c, node));
+                    UiPathAccessor.Set(node.Element, "Text/@String", d.Item4 ?? "");
+                    UiPathAccessor.Set(node.Element, "Text/@FontName", donor != null ? UiPathAccessor.Get(donor.Element, "Text/@FontName")! : "Arial");
+                    UiPathAccessor.Set(node.Element, "Text/@FontSize", donor != null ? (UiPathAccessor.Get(donor.Element, "Text/@FontSize") ?? "12") : "12");
+                    UiPathAccessor.Set(node.Element, "Text/@Color", "255,255,255,255");
+                }
+
                 _selection.Clear();
                 _selection.Add(node);
             });

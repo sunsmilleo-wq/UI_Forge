@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("UiForge.UiFormat")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c898a977b7bb8a10aab461e6b305bfaca319ab7f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("UiForge.UiFormat")]
 [assembly: System.Reflection.AssemblyTitleAttribute("UiForge.UiFormat")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

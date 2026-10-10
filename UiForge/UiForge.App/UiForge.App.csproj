@@ -29,15 +29,19 @@
          интерфейсов читается через _x86.dll, а архив текстур — через _x86_b.dll. -->
     <None Include="pckdll_x86.dll" Condition="Exists('pckdll_x86.dll')">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>
     <None Include="pckdll_x86_b.dll" Condition="Exists('pckdll_x86_b.dll')">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>
     <None Include="pckdll_x64.dll" Condition="Exists('pckdll_x64.dll')">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>
     <None Include="pckdll_x64_b.dll" Condition="Exists('pckdll_x64_b.dll')">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>
   </ItemGroup>
 

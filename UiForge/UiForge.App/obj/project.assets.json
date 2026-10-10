@@ -168,11 +168,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin\\Documents\\GitHub\\UI_Forge\\UiForge\\UiForge.App\\UiForge.App.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\Desktop\\програмирование с++\\UiForge\\UiForge.App\\UiForge.App.csproj",
       "projectName": "UiForge",
-      "projectPath": "C:\\Users\\Admin\\Documents\\GitHub\\UI_Forge\\UiForge\\UiForge.App\\UiForge.App.csproj",
+      "projectPath": "C:\\Users\\Admin\\Desktop\\програмирование с++\\UiForge\\UiForge.App\\UiForge.App.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Admin\\Documents\\GitHub\\UI_Forge\\UiForge\\UiForge.App\\obj\\",
+      "outputPath": "C:\\Users\\Admin\\Desktop\\програмирование с++\\UiForge\\UiForge.App\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -190,14 +190,14 @@
           "framework": "net8.0-windows7.0",
           "targetAlias": "net8.0-windows",
           "projectReferences": {
-            "C:\\Users\\Admin\\Documents\\GitHub\\UI_Forge\\UiForge\\UiForge.Core\\UiForge.Core.csproj": {
-              "projectPath": "C:\\Users\\Admin\\Documents\\GitHub\\UI_Forge\\UiForge\\UiForge.Core\\UiForge.Core.csproj"
+            "C:\\Users\\Admin\\Desktop\\програмирование с++\\UiForge\\UiForge.Core\\UiForge.Core.csproj": {
+              "projectPath": "C:\\Users\\Admin\\Desktop\\програмирование с++\\UiForge\\UiForge.Core\\UiForge.Core.csproj"
             },
-            "C:\\Users\\Admin\\Documents\\GitHub\\UI_Forge\\UiForge\\UiForge.Engine.WinPck\\UiForge.Engine.WinPck.csproj": {
-              "projectPath": "C:\\Users\\Admin\\Documents\\GitHub\\UI_Forge\\UiForge\\UiForge.Engine.WinPck\\UiForge.Engine.WinPck.csproj"
+            "C:\\Users\\Admin\\Desktop\\програмирование с++\\UiForge\\UiForge.Engine.WinPck\\UiForge.Engine.WinPck.csproj": {
+              "projectPath": "C:\\Users\\Admin\\Desktop\\програмирование с++\\UiForge\\UiForge.Engine.WinPck\\UiForge.Engine.WinPck.csproj"
             },
-            "C:\\Users\\Admin\\Documents\\GitHub\\UI_Forge\\UiForge\\UiForge.UiFormat\\UiForge.UiFormat.csproj": {
-              "projectPath": "C:\\Users\\Admin\\Documents\\GitHub\\UI_Forge\\UiForge\\UiForge.UiFormat\\UiForge.UiFormat.csproj"
+            "C:\\Users\\Admin\\Desktop\\програмирование с++\\UiForge\\UiForge.UiFormat\\UiForge.UiFormat.csproj": {
+              "projectPath": "C:\\Users\\Admin\\Desktop\\програмирование с++\\UiForge\\UiForge.UiFormat\\UiForge.UiFormat.csproj"
             }
           }
         }

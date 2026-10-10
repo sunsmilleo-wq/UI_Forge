@@ -186,18 +186,45 @@ namespace UiForge.App
         private void AddColorRow(string label, string? value, Action<string> commit)
         {
             var panel = new DockPanel();
+
+            var inner = new Border
+            {
+                CornerRadius = new CornerRadius(3),
+                Background = new SolidColorBrush(PwColor.Parse(value, Colors.Gray))
+            };
             var swatch = new Border
             {
-                Width = 22, Height = 22, Margin = new Thickness(0, 0, 6, 0), CornerRadius = new CornerRadius(3),
-                BorderBrush = Brushes.Black, BorderThickness = new Thickness(1),
-                Background = new SolidColorBrush(PwColor.Parse(value, Colors.Gray))
+                Width = 30, Height = 24, Margin = new Thickness(0, 0, 6, 0), CornerRadius = new CornerRadius(4),
+                BorderBrush = (Brush)FindResource("TextMuted"), BorderThickness = new Thickness(1),
+                Background = SmallChecker(), Child = inner, Cursor = Cursors.Hand,
+                ToolTip = "Нажмите, чтобы выбрать цвет"
             };
             DockPanel.SetDock(swatch, Dock.Left);
 
-            var box = new TextBox { Text = value ?? "" };
-            box.TextChanged += (_, _) => swatch.Background = new SolidColorBrush(PwColor.Parse(box.Text, Colors.Gray));
-            box.LostFocus += (_, _) => { if (box.Text != (value ?? "")) commit(box.Text); };
+            var box = new TextBox
+            {
+                Text = value ?? "",
+                ToolTip = "R,G,B,A — красный, зелёный, синий (0–255) и непрозрачность (255 — полностью виден, 0 — невидим)"
+            };
+            bool committed = false;
+
+            box.TextChanged += (_, _) => inner.Background = new SolidColorBrush(PwColor.Parse(box.Text, Colors.Gray));
+            box.LostFocus += (_, _) =>
+            {
+                if (!committed && box.Text != (value ?? "")) { committed = true; commit(box.Text); }
+            };
             box.KeyDown += (_, e) => { if (e.Key == Key.Enter) Keyboard.ClearFocus(); };
+
+            swatch.MouseLeftButtonUp += (_, _) =>
+            {
+                var picker = new ColorPickerWindow(PwColor.Parse(box.Text, Colors.White)) { Owner = this };
+                if (picker.ShowDialog() == true && !committed)
+                {
+                    committed = true;
+                    box.Text = picker.PickedString;
+                    commit(picker.PickedString);
+                }
+            };
 
             panel.Children.Add(swatch);
             panel.Children.Add(box);
@@ -206,24 +233,38 @@ namespace UiForge.App
 
         private void AddImageRow(string label, string? value, Action<string> commit)
         {
-            var stack = new StackPanel { Orientation = Orientation.Horizontal };
+            // Подпись сверху, а под ней — картинка, полный путь и кнопка: так путь не обрезается
+            // и хорошо читается (раньше он делил узкую строку с кнопкой).
+            var row = new Grid { Margin = new Thickness(0, 0, 0, 2) };
+            row.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+            row.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+            row.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
 
             var thumb = new Border
             {
-                Width = 32, Height = 32, Margin = new Thickness(0, 0, 6, 0), Background = Brushes.Black,
-                BorderBrush = (Brush)FindResource("BorderBrush1"), BorderThickness = new Thickness(1)
+                Width = 44, Height = 44, Margin = new Thickness(0, 0, 8, 0), CornerRadius = new CornerRadius(4),
+                Background = SmallChecker(), BorderBrush = (Brush)FindResource("BorderBrush1"), BorderThickness = new Thickness(1),
+                ClipToBounds = true
             };
             var img = _imageResolver?.Resolve(value);
-            if (img != null) thumb.Child = new Image { Source = img, Stretch = Stretch.Uniform };
+            if (img != null) thumb.Child = new Image { Source = img, Stretch = Stretch.Uniform, Margin = new Thickness(2) };
+            Grid.SetColumn(thumb, 0);
 
-            var name = new TextBlock
+            var path = new TextBlock
             {
-                Text = string.IsNullOrEmpty(value) ? "(нет)" : value, ToolTip = value,
-                VerticalAlignment = VerticalAlignment.Center, Width = 100,
-                TextTrimming = TextTrimming.CharacterEllipsis, Margin = new Thickness(0, 0, 6, 0)
+                Text = string.IsNullOrEmpty(value) ? "(не задана)" : value,
+                ToolTip = value,
+                Foreground = string.IsNullOrEmpty(value) ? (Brush)FindResource("TextMuted") : (Brush)FindResource("TextPrimary"),
+                FontSize = 12,
+                TextWrapping = TextWrapping.Wrap,
+                TextTrimming = TextTrimming.CharacterEllipsis,
+                MaxHeight = 44,
+                VerticalAlignment = VerticalAlignment.Center,
+                Margin = new Thickness(0, 0, 8, 0)
             };
+            Grid.SetColumn(path, 1);
 
-            var browse = new Button { Content = "Обзор…", Padding = new Thickness(8, 3, 8, 3) };
+            var browse = new Button { Content = "Обзор…", Padding = new Thickness(10, 4, 10, 4), Margin = new Thickness(0), VerticalAlignment = VerticalAlignment.Center };
             browse.Click += (_, _) =>
             {
                 if (_imageResolver is null)
@@ -236,11 +277,34 @@ namespace UiForge.App
                 if (picker.ShowDialog() == true && picker.SelectedFileName != null)
                     commit(picker.SelectedFileName);
             };
+            Grid.SetColumn(browse, 2);
 
-            stack.Children.Add(thumb);
-            stack.Children.Add(name);
-            stack.Children.Add(browse);
-            AddLabeledRow(label, stack);
+            row.Children.Add(thumb);
+            row.Children.Add(path);
+            row.Children.Add(browse);
+
+            var holder = new StackPanel { Margin = new Thickness(0, 4, 0, 4) };
+            holder.Children.Add(new TextBlock
+            {
+                Text = label, Foreground = (Brush)FindResource("TextMuted"), Margin = new Thickness(0, 0, 0, 3), TextWrapping = TextWrapping.Wrap
+            });
+            holder.Children.Add(row);
+            PropertiesPanel.Children.Add(holder);
         }
+
+        private static Brush SmallChecker() => new DrawingBrush
+        {
+            TileMode = TileMode.Tile,
+            Viewport = new Rect(0, 0, 8, 8),
+            ViewportUnits = BrushMappingMode.Absolute,
+            Drawing = new DrawingGroup
+            {
+                Children =
+                {
+                    new GeometryDrawing(new SolidColorBrush(Color.FromRgb(0x3A, 0x3B, 0x47)), null, Geometry.Parse("M0,0 H8 V8 H0 Z")),
+                    new GeometryDrawing(new SolidColorBrush(Color.FromRgb(0x4D, 0x4E, 0x5C)), null, Geometry.Parse("M0,0 H4 V4 H0 Z M4,4 H8 V8 H4 Z"))
+                }
+            }
+        };
     }
 }
