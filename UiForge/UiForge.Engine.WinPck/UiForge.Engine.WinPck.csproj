@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <!-- Сейчас x86 (см. пояснение в UiForge.App.csproj) — после сборки
+         pckdll_x64.dll смените на x64, код P/Invoke менять не нужно. -->
+    <PlatformTarget>x86</PlatformTarget>
+    <RootNamespace>UiForge.Engine.WinPck</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UiForge.Core\UiForge.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Положите pckdll_x86.dll в эту папку — скопируется рядом с итоговым exe. -->
+    <None Include="pckdll_x86.dll" Condition="Exists('pckdll_x86.dll')">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <!-- Появится после сборки по BUILD_X64.md — тоже скопируется, если лежит рядом. -->
+    <None Include="pckdll_x64.dll" Condition="Exists('pckdll_x64.dll')">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

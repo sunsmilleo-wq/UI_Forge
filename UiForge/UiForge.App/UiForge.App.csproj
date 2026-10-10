@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <!-- Пока есть только 32-битная pckdll_x86.dll — процесс тоже x86. -->
+    <PlatformTarget>x86</PlatformTarget>
+    <RootNamespace>UiForge.App</RootNamespace>
+    <AssemblyName>UiForge</AssemblyName>
+    <ApplicationTitle>UiForge</ApplicationTitle>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UiForge.Core\UiForge.Core.csproj" />
+    <ProjectReference Include="..\UiForge.Engine.WinPck\UiForge.Engine.WinPck.csproj" />
+    <ProjectReference Include="..\UiForge.UiFormat\UiForge.UiFormat.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AvalonEdit" Version="6.3.0.90" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Две копии одной и той же DLL: pckdll держит одну глобальную сессию, поэтому архив
+         интерфейсов читается через _x86.dll, а архив текстур — через _x86_b.dll. -->
+    <None Include="pckdll_x86.dll" Condition="Exists('pckdll_x86.dll')">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="pckdll_x86_b.dll" Condition="Exists('pckdll_x86_b.dll')">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="pckdll_x64.dll" Condition="Exists('pckdll_x64.dll')">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="pckdll_x64_b.dll" Condition="Exists('pckdll_x64_b.dll')">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

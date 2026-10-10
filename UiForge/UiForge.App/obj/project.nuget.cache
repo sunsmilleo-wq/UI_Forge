@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "DxynXeNYtzk=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Admin\\Desktop\\програмирование с++\\UiForge\\UiForge.App\\UiForge.App.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\avalonedit\\6.3.0.90\\avalonedit.6.3.0.90.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\system.text.encoding.codepages\\8.0.0\\system.text.encoding.codepages.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

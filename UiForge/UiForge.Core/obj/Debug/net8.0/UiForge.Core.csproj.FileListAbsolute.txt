@@ -1,0 +1,12 @@
+C:\Users\Admin\Desktop\програмирование с++\UiForge\UiForge.Core\bin\Debug\net8.0\UiForge.Core.deps.json
+C:\Users\Admin\Desktop\програмирование с++\UiForge\UiForge.Core\bin\Debug\net8.0\UiForge.Core.dll
+C:\Users\Admin\Desktop\програмирование с++\UiForge\UiForge.Core\bin\Debug\net8.0\UiForge.Core.pdb
+C:\Users\Admin\Desktop\програмирование с++\UiForge\UiForge.Core\obj\Debug\net8.0\UiForge.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Desktop\програмирование с++\UiForge\UiForge.Core\obj\Debug\net8.0\UiForge.Core.AssemblyInfoInputs.cache
+C:\Users\Admin\Desktop\програмирование с++\UiForge\UiForge.Core\obj\Debug\net8.0\UiForge.Core.AssemblyInfo.cs
+C:\Users\Admin\Desktop\програмирование с++\UiForge\UiForge.Core\obj\Debug\net8.0\UiForge.Core.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\програмирование с++\UiForge\UiForge.Core\obj\Debug\net8.0\UiForge.Core.dll
+C:\Users\Admin\Desktop\програмирование с++\UiForge\UiForge.Core\obj\Debug\net8.0\refint\UiForge.Core.dll
+C:\Users\Admin\Desktop\програмирование с++\UiForge\UiForge.Core\obj\Debug\net8.0\UiForge.Core.pdb
+C:\Users\Admin\Desktop\програмирование с++\UiForge\UiForge.Core\obj\Debug\net8.0\ref\UiForge.Core.dll
+C:\Users\Admin\Desktop\програмирование с++\UiForge\UiForge.Core\obj\Debug\net8.0\UiForge..A12357E2.Up2Date

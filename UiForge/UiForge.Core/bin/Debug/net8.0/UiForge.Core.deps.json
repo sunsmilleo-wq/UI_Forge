@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "UiForge.Core/1.0.0": {
+        "runtime": {
+          "UiForge.Core.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "UiForge.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
